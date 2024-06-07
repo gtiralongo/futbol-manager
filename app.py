@@ -1,92 +1,13 @@
 import streamlit as st
-import json
-
-# Función para cargar datos
-def load_data():
-    try:
-        with open('data.json', 'r') as file:
-            data = json.load(file)
-        return data
-    except FileNotFoundError:
-        st.error("El archivo data.json no se encuentra.")
-        return []
-    except json.JSONDecodeError:
-        st.error("Error al decodificar el archivo JSON.")
-        return []
-
-# Función para guardar datos
-def save_data(data):
-    try:
-        with open('data.json', 'w') as file:
-            json.dump(data, file, indent=4)
-        st.success("Datos guardados exitosamente.")
-    except Exception as e:
-        st.error(f"Error al guardar los datos: {e}")
 
 # Página de bienvenida
 def welcome_page():
     st.title("Bienvenido a la Selección de Jugadores")
     st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
 
-# Página para seleccionar equipos
-def team_selection_page():
-    st.title("Selección de Equipos")
-    data = load_data()
-
-    if len(data) < 2:
-        st.warning("No hay suficientes jugadores para formar equipos.")
-        return
-
-    st.write("Lista de Jugadores:")
-    for player in data:
-        st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
-
-    criteria = st.selectbox("Selecciona el criterio de selección", ["velocidad", "defensa", "ataque"])
-    sorted_data = sorted(data, key=lambda x: x[criteria], reverse=True)
-
-    team1 = sorted_data[::2]
-    team2 = sorted_data[1::2]
-
-    st.write("Equipo 1:")
-    for player in team1:
-        st.write(f"{player['name']}")
-
-    st.write("Equipo 2:")
-    for player in team2:
-        st.write(f"{player['name']}")
-
-# Página para editar jugadores
-def edit_player_page():
-    st.title("Editar Jugadores")
-    data = load_data()
-
-    if not data:
-        st.warning("No hay jugadores disponibles para editar.")
-        return
-
-    player_names = [player["name"] for player in data]
-    selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
-    player_data = next(player for player in data if player["name"] == selected_player)
-
-    velocidad = st.slider("Velocidad", 0, 100, player_data["velocidad"])
-    defensa = st.slider("Defensa", 0, 100, player_data["defensa"])
-    ataque = st.slider("Ataque", 0, 100, player_data["ataque"])
-    posición = st.selectbox("Posición", ["delantero", "defensa", "centrocampista", "portero"], index=["delantero", "defensa", "centrocampista", "portero"].index(player_data["posición"]))
-
-    if st.button("Guardar cambios"):
-        player_data["velocidad"] = velocidad
-        player_data["defensa"] = defensa
-        player_data["ataque"] = ataque
-        player_data["posición"] = posición
-        save_data(data)
-
 # Navegación
 st.sidebar.title("Navegación")
-page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida", "Selección de Equipos", "Editar Jugadores"])
+page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida"])
 
 if page == "Bienvenida":
     welcome_page()
-elif page == "Selección de Equipos":
-    team_selection_page()
-elif page == "Editar Jugadores":
-    edit_player_page()
