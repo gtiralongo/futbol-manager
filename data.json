@@ -1,5 +1,5 @@
-[
+{
     {"name": "Jugador1", "velocidad": 80, "defensa": 70, "ataque": 90, "posición": "delantero"},
     {"name": "Jugador2", "velocidad": 75, "defensa": 85, "ataque": 70, "posición": "defensa"},
     // Agrega más jugadores según sea necesario
-]
+}
