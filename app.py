@@ -31,7 +31,7 @@ def welcome_page():
 # Página para seleccionar equipos
 def team_selection_page():
     st.title("Selección de Equipos")
-    data = load_data()
+    data = load_data("data.json")
 
     if len(data) < 2:
         st.warning("No hay suficientes jugadores para formar equipos.")
@@ -58,7 +58,7 @@ def team_selection_page():
 # Página para editar jugadores
 def edit_player_page():
     st.title("Editar Jugadores")
-    data = load_data()
+    data = load_data("data.json")
 
     if not data:
         st.warning("No hay jugadores disponibles para editar.")
