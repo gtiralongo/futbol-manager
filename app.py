@@ -3,14 +3,25 @@ import json
 
 # Función para cargar datos
 def load_data():
-    with open('data.json', 'r') as file:
-        data = json.load(file)
-    return data
+    try:
+        with open('data.json', 'r') as file:
+            data = json.load(file)
+        return data
+    except FileNotFoundError:
+        st.error("El archivo data.json no se encuentra.")
+        return []
+    except json.JSONDecodeError:
+        st.error("Error al decodificar el archivo JSON.")
+        return []
 
 # Función para guardar datos
 def save_data(data):
-    with open('data.json', 'w') as file:
-        json.dump(data, file, indent=4)
+    try:
+        with open('data.json', 'w') as file:
+            json.dump(data, file, indent=4)
+        st.success("Datos guardados exitosamente.")
+    except Exception as e:
+        st.error(f"Error al guardar los datos: {e}")
 
 # Página de bienvenida
 def welcome_page():
@@ -49,6 +60,10 @@ def edit_player_page():
     st.title("Editar Jugadores")
     data = load_data()
 
+    if not data:
+        st.warning("No hay jugadores disponibles para editar.")
+        return
+
     player_names = [player["name"] for player in data]
     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
     player_data = next(player for player in data if player["name"] == selected_player)
@@ -64,7 +79,6 @@ def edit_player_page():
         player_data["ataque"] = ataque
         player_data["posición"] = posición
         save_data(data)
-        st.success("Cambios guardados")
 
 # Navegación
 st.sidebar.title("Navegación")
