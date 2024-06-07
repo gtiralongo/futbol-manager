@@ -2,10 +2,11 @@ import streamlit as st
 import json
 
 # Función para cargar datos
-def load_data():
+def load_data(file_data):
     try:
-        with open('data.json', 'r') as file:
+        with open(file_data, 'r') as file:
             data = json.load(file)
+            print(data)
         return data
     except FileNotFoundError:
         st.error("El archivo data.json no se encuentra.")
@@ -15,9 +16,9 @@ def load_data():
         return []
 
 # Función para guardar datos
-def save_data(data):
+def save_data(data,file_data):
     try:
-        with open('data.json', 'w') as file:
+        with open(file_data, 'w') as file:
             json.dump(data, file, indent=4)
         st.success("Datos guardados exitosamente.")
     except Exception as e:
