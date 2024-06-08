@@ -4,79 +4,27 @@ from random import shuffle
 import subprocess
 
 # Función para cargar datos
-def load_data(file_data):
+def load_data(filename='data.json'):
     try:
-        with open(file_data, 'r') as file:
+        with open(filename, 'r') as file:
             data = json.load(file)
-            print(data)
         return data
     except FileNotFoundError:
         st.error("El archivo data.json no se encuentra.")
-        return []
+        return {}
     except json.JSONDecodeError:
         st.error("Error al decodificar el archivo JSON.")
-        return []
+        return {}
 
 # Función para guardar datos
-def save_data(data,file_data):
+def save_data(data, filename='data.json'):
     try:
-        with open(file_data, 'w') as file:
+        with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
         st.success("Datos guardados exitosamente.")
     except Exception as e:
         st.error(f"Error al guardar los datos: {e}")
 
-# Página de bienvenida
-def welcome_page():
-    st.title("Bienvenido a la Selección de Jugadores")
-    st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
-
-# Página para editar jugadores
-def edit_player_page():
-    st.title("Editar Jugadores")
-    data = load_data("data.json")
-
-    if not data:
-        st.warning("No hay jugadores disponibles para editar.")
-        return
-
-    player_names = [data[player]["name"] for player in data]
-    selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
-    player_data = next(data[player] for player in data if data[player]["name"] == selected_player)
-
-    velocidad = st.slider("Velocidad", 1, 5, player_data["velocidad"])
-    defensa = st.slider("Defensa", 1, 5, player_data["defensa"])
-    ataque = st.slider("Ataque", 1, 5, player_data["ataque"])
-    posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
-
-    if st.button("Guardar cambios"):
-        player_data["velocidad"] = velocidad
-        player_data["defensa"] = defensa
-        player_data["ataque"] = ataque
-        player_data["posición"] = posición
-        save_data(data,'data.json')
-        
-def add_new_player_page():
-    st.header("Agregar Nuevo Jugador")
-    data = load_data("data.json")
-    new_name = st.text_input("Nombre del jugador")
-    new_velocidad = st.slider("Velocidad", 0, 5, 3)
-    new_defensa = st.slider("Defensa",0, 5, 3)
-    new_ataque = st.slider("Ataque", 0, 5, 3)
-    new_posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"])
-
-    if st.button("Agregar Jugador"):
-        if new_name:
-            data[f"Jugador{len(data)+1}"] = {
-                "name": new_name,
-                "velocidad": new_velocidad,
-                "defensa": new_defensa,
-                "ataque": new_ataque,
-                "posición": new_posición
-            }
-            save_data(data,'data.json')
-        else:
-            st.warning("El nombre del jugador no puede estar vacío.")
 # Función para hacer commit y push a GitHub
 def git_push():
     try:
@@ -119,6 +67,35 @@ def balance_teams(players, num_players_per_team):
 
     return teams, avg_team1, avg_team2
 
+# Página para agregar un nuevo jugador
+def add_new_player_page():
+    st.header("Agregar Nuevo Jugador")
+    data = load_data("data.json")
+    new_name = st.text_input("Nombre del jugador")
+    new_velocidad = st.slider("Velocidad", 0, 5, 3)
+    new_defensa = st.slider("Defensa", 0, 5, 3)
+    new_ataque = st.slider("Ataque", 0, 5, 3)
+    new_posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"])
+
+    if st.button("Agregar Jugador"):
+        if new_name:
+            data[f"Jugador{len(data)+1}"] = {
+                "name": new_name,
+                "velocidad": new_velocidad,
+                "defensa": new_defensa,
+                "ataque": new_ataque,
+                "posición": new_posición
+            }
+            save_data(data, 'data.json')
+            git_push()  # Llamar a la función para hacer commit y push
+        else:
+            st.warning("El nombre del jugador no puede estar vacío.")
+
+# Página de bienvenida
+def welcome_page():
+    st.title("Bienvenido a la Selección de Jugadores")
+    st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
+
 # Página para anotar jugadores y seleccionar equipos
 def add_and_select_teams_page():
     st.title("Anotar Jugadores y Seleccionar Equipos")
@@ -146,18 +123,16 @@ def add_and_select_teams_page():
         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
         
         st.write("Equipo 1:")
-        st.write("Equipo tgjnnfdfjnf:")
+        for player in teams['Team 1']:
+            st.write(player['name'])
         st.write("Promedio de habilidades del Equipo 1:")
         st.write(f"Velocidad: {avg_team1['velocidad']:.2f}, Defensa: {avg_team1['defensa']:.2f}, Ataque: {avg_team1['ataque']:.2f}")
 
-        for player in teams['Team 1']:
-            st.write(player['name'])
-        
         st.write("Equipo 2:")
-        st.write("Promedio de habilidades del Equipo 2:")
-        st.write(f"Velocidad: {avg_team2['velocidad']:.2f}, Defensa: {avg_team2['defensa']:.2f}, Ataque: {avg_team2['ataque']:.2f}")
         for player in teams['Team 2']:
             st.write(player['name'])
+        st.write("Promedio de habilidades del Equipo 2:")
+        st.write(f"Velocidad: {avg_team2['velocidad']:.2f}, Defensa: {avg_team2['defensa']:.2f}, Ataque: {avg_team2['ataque']:.2f}")
 
 
 # Navegación
