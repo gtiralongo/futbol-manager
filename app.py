@@ -136,7 +136,7 @@ def balance_teams(players, num_players_per_team):
 def select_teams_page():
     st.title("Seleccionar Equipos")
     anotados = load_data('anotados.json')
-
+    st.text(anotados)
     if not anotados:
         st.warning("No hay jugadores anotados disponibles.")
         return
