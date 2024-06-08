@@ -69,17 +69,17 @@
         "ataque": 3,
         "posición": "Defensa"
     },
-    "Jugador3": {
-        "name": "Mariano",
+    "Jugador11": {
+        "name": "Agus",
         "velocidad": 2,
-        "defensa": 4,
+        "defensa": 3,
         "ataque": 3,
         "posición": "Defensa"
     },
-    "Jugador3": {
-        "name": "Mariano",
-        "velocidad": 2,
-        "defensa": 4,
+    "Jugador12": {
+        "name": "Santi",
+        "velocidad": 5,
+        "defensa": 2,
         "ataque": 3,
         "posición": "Defensa"
     }
