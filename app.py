@@ -77,30 +77,6 @@ def add_new_player_page():
             save_data(data,'data.json')
         else:
             st.warning("El nombre del jugador no puede estar vacío.")
-def add_players_page():
-    st.title("Anotar Jugadores")
-    data = load_data('data.json')
-
-    if not data:
-        st.warning("No hay jugadores disponibles en el archivo JSON.")
-        return
-
-    anotados = st.session_state.get("anotados", [])
-
-    st.write("Lista de Jugadores:")
-    for key, player in data.items():
-        if st.checkbox(f"{player['name']}", key=key):
-            if player not in anotados:
-                anotados.append(player)
-        else:
-            if player in anotados:
-                anotados.remove(player)
-
-    st.session_state["anotados"] = anotados
-
-    if st.button("Guardar Jugadores Anotados"):
-        save_data(anotados, 'anotados.json')
-        st.success("Jugadores anotados guardados.")
 
 # Función para equilibrar equipos
 def balance_teams(players, num_players_per_team):
@@ -132,11 +108,23 @@ def balance_teams(players, num_players_per_team):
     
     return teams
 
-# Página para seleccionar equipos
-def select_teams_page():
-    st.title("Seleccionar Equipos")
-    anotados = load_data('anotados.json')
-    st.text(anotados)
+# Página para anotar jugadores y seleccionar equipos
+def add_and_select_teams_page():
+    st.title("Anotar Jugadores y Seleccionar Equipos")
+    data = load_data()
+    anotados = st.session_state.get("anotados", [])
+
+    st.write("Lista de Jugadores:")
+    for key, player in data.items():
+        if st.checkbox(f"{player['name']}", key=key):
+            if player not in anotados:
+                anotados.append(player)
+        else:
+            if player in anotados:
+                anotados.remove(player)
+
+    st.session_state["anotados"] = anotados
+
     if not anotados:
         st.warning("No hay jugadores anotados disponibles.")
         return
@@ -154,14 +142,12 @@ def select_teams_page():
             st.write(player['name'])
 # Navegación
 st.sidebar.title("Navegación")
-page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar Jugadores", "Selección de Equipos", "Editar Jugadores","Agregar Jugadores Nuevo"])
+page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores","Agregar Jugadores Nuevo"])
 
 if page == "Bienvenida":
     welcome_page()
-elif page == "Anotar Jugadores":
-    add_players_page()
-elif page == "Seleccionar Equipos":
-    select_teams_page()
+elif page == "Anotar y Seleccionar Equipos":
+    add_and_select_teams_page()
 elif page == "Editar Jugadores":
     edit_player_page()
 elif page == "Agregar Jugadores Nuevo":
