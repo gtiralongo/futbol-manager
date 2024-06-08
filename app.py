@@ -111,7 +111,7 @@ def balance_teams(players, num_players_per_team):
 # Página para anotar jugadores y seleccionar equipos
 def add_and_select_teams_page():
     st.title("Anotar Jugadores y Seleccionar Equipos")
-     data = load_data("data.json")
+    data = load_data("data.json")
     anotados = st.session_state.get("anotados", [])
 
     st.write("Lista de Jugadores:")
