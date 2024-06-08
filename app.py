@@ -69,10 +69,10 @@ def edit_player_page():
     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
     player_data = next(data[player] for player in data if data[player]["name"] == selected_player)
 
-    velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
-    defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
-    ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
-    posición = st.selectbox("Posición", ["delantero", "defensa", "centrocampista", "portero"], index=["delantero", "defensa", "centrocampista", "portero"].index(player_data["posición"]))
+    velocidad = st.slider("Velocidad", 1, 5, player_data["velocidad"])
+    defensa = st.slider("Defensa", 1, 5, player_data["defensa"])
+    ataque = st.slider("Ataque", 1, 5, player_data["ataque"])
+    posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["delantero", "defensa", "centrocampista", "portero"].index(player_data["posición"]))
 
     if st.button("Guardar cambios"):
         player_data["velocidad"] = velocidad
@@ -80,6 +80,27 @@ def edit_player_page():
         player_data["ataque"] = ataque
         player_data["posición"] = posición
         save_data(data,'data.json')
+
+    st.write("---")
+        st.header("Agregar Nuevo Jugador")
+        new_name = st.text_input("Nombre del jugador")
+        new_velocidad = st.slider("Velocidad", 1, 5, 3)
+        new_defensa = st.slider("Defensa", 1, 5, 3)
+        new_ataque = st.slider("Ataque", 1, 5, 3)
+        new_posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"])
+    
+        if st.button("Agregar Jugador"):
+            if new_name:
+                data[f"Jugador{len(data)+1}"] = {
+                    "name": new_name,
+                    "velocidad": new_velocidad,
+                    "defensa": new_defensa,
+                    "ataque": new_ataque,
+                    "posición": new_posición
+                }
+                save_data(data)
+            else:
+                st.warning("El nombre del jugador no puede estar vacío.")
 
 # Navegación
 st.sidebar.title("Navegación")
