@@ -33,6 +33,7 @@ def welcome_page():
 def team_selection_page():
     st.title("Selección de Equipos")
     data = load_data("data.json")
+    st.title(data)
 
     if len(data) < 2:
         st.warning("No hay suficientes jugadores para formar equipos.")
