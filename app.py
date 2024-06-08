@@ -130,7 +130,7 @@ def add_and_select_teams_page():
         st.warning("No hay jugadores anotados disponibles.")
         return
 
-    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=22, value=1, step=1)
+    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=11, value=1, step=1)
 
     if st.button("Formar Equipos"):
         teams = balance_teams(anotados, num_players_per_team)
