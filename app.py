@@ -160,8 +160,8 @@ if page == "Bienvenida":
     welcome_page()
 elif page == "Anotar Jugadores":
     add_players_page()
-elif page == "Selección de Equipos":
-    team_selection_page()
+elif page == "Seleccionar Equipos":
+    select_teams_page()
 elif page == "Editar Jugadores":
     edit_player_page()
 elif page == "Agregar Jugadores Nuevo":
