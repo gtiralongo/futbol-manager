@@ -40,7 +40,7 @@ def team_selection_page():
 
     st.write("Lista de Jugadores:")
     for player in data:
-        st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
+        st.write(f"Nombre: {data[player]['name']}, Velocidad: {player['velocidad']}, Defensa: {data[player]['defensa']}, Ataque: {data[player]['ataque']}, Posición: {data[player]['posición']}")
 
     criteria = st.selectbox("Selecciona el criterio de selección", ["velocidad", "defensa", "ataque"])
     sorted_data = sorted(data, key=lambda x: x[criteria], reverse=True)
@@ -50,11 +50,11 @@ def team_selection_page():
 
     st.write("Equipo 1:")
     for player in team1:
-        st.write(f"{player['name']}")
+        st.write(f"{data[player]['name']}")
 
     st.write("Equipo 2:")
     for player in team2:
-        st.write(f"{player['name']}")
+        st.write(f"{data[player]['name']}")
 
 # Página para editar jugadores
 def edit_player_page():
