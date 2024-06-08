@@ -33,7 +33,6 @@ def welcome_page():
 def team_selection_page():
     st.title("Selección de Equipos")
     data = load_data("data.json")
-    st.title(data)
 
     if len(data) < 2:
         st.warning("No hay suficientes jugadores para formar equipos.")
@@ -41,6 +40,7 @@ def team_selection_page():
 
     st.write("Lista de Jugadores:")
     for player in data:
+        st.title(data[player])
         st.write(f"Nombre: {data[player]['name']}, Velocidad: {player['velocidad']}, Defensa: {data[player]['defensa']}, Ataque: {data[player]['ataque']}, Posición: {data[player]['posición']}")
 
     criteria = st.selectbox("Selecciona el criterio de selección", ["velocidad", "defensa", "ataque"])
