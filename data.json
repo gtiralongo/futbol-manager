@@ -12,5 +12,76 @@
         "defensa": 4,
         "ataque": 3,
         "posición": "Defensa"
+    },
+    "Jugador3": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    
+    "Jugador4": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador5": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador6": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador7": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador8": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador9": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador10": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador3": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
+    },
+    "Jugador3": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posición": "Defensa"
     }
 }
