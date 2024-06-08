@@ -1,16 +1,16 @@
 {
     "Jugador1": {
         "name": "Gustavo",
-        "velocidad": 80,
-        "defensa": 70,
-        "ataque": 90,
+        "velocidad": 5,
+        "defensa": 3,
+        "ataque": 4,
         "posición": "delantero"
     },
     "Jugador2": {
         "name": "Mariano",
-        "velocidad": 75,
-        "defensa": 85,
-        "ataque": 70,
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
         "posición": "defensa"
     }
 }
