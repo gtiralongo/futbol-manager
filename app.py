@@ -83,6 +83,7 @@ def edit_player_page():
         
 def add_new_player_page():
     st.header("Agregar Nuevo Jugador")
+    data = load_data("data.json")
     new_name = st.text_input("Nombre del jugador")
     new_velocidad = st.slider("Velocidad", 0, 5, 3)
     new_defensa = st.slider("Defensa",0, 5, 3)
