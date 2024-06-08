@@ -80,13 +80,14 @@ def edit_player_page():
         player_data["ataque"] = ataque
         player_data["posición"] = posición
         save_data(data,'data.json')
-
+        
+def add_new_player_page():
     st.write("---")
     st.header("Agregar Nuevo Jugador")
     new_name = st.text_input("Nombre del jugador")
-    new_velocidad = st.slider("Velocidad", 0, 100, 50)
-    new_defensa = st.slider("Defensa", 0, 100, 50)
-    new_ataque = st.slider("Ataque", 0, 100, 50)
+    new_velocidad = st.slider("Velocidad", 0, 5, 3)
+    new_defensa = st.slider("Defensa",0, 5, 3)
+    new_ataque = st.slider("Ataque", 0, 5, 3)
     new_posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"])
 
     if st.button("Agregar Jugador"):
@@ -111,3 +112,5 @@ elif page == "Selección de Equipos":
     team_selection_page()
 elif page == "Editar Jugadores":
     edit_player_page()
+elif page == "Agregar Jugadores Nuevo":
+    add_new_player_page()
