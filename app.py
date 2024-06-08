@@ -82,7 +82,6 @@ def edit_player_page():
         save_data(data,'data.json')
         
 def add_new_player_page():
-    st.write("---")
     st.header("Agregar Nuevo Jugador")
     new_name = st.text_input("Nombre del jugador")
     new_velocidad = st.slider("Velocidad", 0, 5, 3)
@@ -99,7 +98,7 @@ def add_new_player_page():
                 "ataque": new_ataque,
                 "posición": new_posición
             }
-            save_data(data)
+            save_data(data,'data.json')
         else:
             st.warning("El nombre del jugador no puede estar vacío.")
 # Navegación
