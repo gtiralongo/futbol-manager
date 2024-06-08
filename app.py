@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+from random import shuffle
 
 # Función para cargar datos
 def load_data(file_data):
