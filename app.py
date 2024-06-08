@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 from random import shuffle
+import subprocess
 
 # Función para cargar datos
 def load_data(file_data):
@@ -29,8 +30,6 @@ def save_data(data,file_data):
 def welcome_page():
     st.title("Bienvenido a la Selección de Jugadores")
     st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
-
-# Página para seleccionar equipos
 
 # Página para editar jugadores
 def edit_player_page():
@@ -78,6 +77,13 @@ def add_new_player_page():
             save_data(data,'data.json')
         else:
             st.warning("El nombre del jugador no puede estar vacío.")
+# Función para hacer commit y push a GitHub
+def git_push():
+    try:
+        result = subprocess.run(["python", "git_push.py"], check=True, capture_output=True, text=True)
+        st.success("Archivo data.json subido exitosamente.")
+    except subprocess.CalledProcessError as e:
+        st.error(f"Error durante la ejecución de git: {e.stderr}")
 
 # Función para equilibrar equipos
 def balance_teams(players, num_players_per_team):
@@ -107,7 +113,11 @@ def balance_teams(players, num_players_per_team):
                 for key in player_stats:
                     sum_team1[key] += player_stats[key]
     
-    return teams
+    # Calcular los promedios
+    avg_team1 = {key: value/num_players_per_team for key, value in sum_team1.items()}
+    avg_team2 = {key: value/num_players_per_team for key, value in sum_team2.items()}
+
+    return teams, avg_team1, avg_team2
 
 # Página para anotar jugadores y seleccionar equipos
 def add_and_select_teams_page():
@@ -133,14 +143,21 @@ def add_and_select_teams_page():
     num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=1, step=1)
 
     if st.button("Formar Equipos"):
-        teams = balance_teams(anotados, num_players_per_team)
+        teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
+        
         st.write("Equipo 1:")
         for player in teams['Team 1']:
             st.write(player['name'])
+        st.write("Promedio de habilidades del Equipo 1:")
+        st.write(f"Velocidad: {avg_team1['velocidad']:.2f}, Defensa: {avg_team1['defensa']:.2f}, Ataque: {avg_team1['ataque']:.2f}")
 
         st.write("Equipo 2:")
         for player in teams['Team 2']:
             st.write(player['name'])
+        st.write("Promedio de habilidades del Equipo 2:")
+        st.write(f"Velocidad: {avg_team2['velocidad']:.2f}, Defensa: {avg_team2['defensa']:.2f}, Ataque: {avg_team2['ataque']:.2f}")
+
+
 # Navegación
 st.sidebar.title("Navegación")
 page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores","Agregar Jugadores Nuevo"])
