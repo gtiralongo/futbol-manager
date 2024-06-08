@@ -103,7 +103,7 @@ def add_new_player_page():
             st.warning("El nombre del jugador no puede estar vacío.")
 # Navegación
 st.sidebar.title("Navegación")
-page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida", "Selección de Equipos", "Editar Jugadores"])
+page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida", "Selección de Equipos", "Editar Jugadores","Agregar Jugadores Nuevo"])
 
 if page == "Bienvenida":
     welcome_page()
