@@ -4,13 +4,13 @@
         "velocidad": 5,
         "defensa": 3,
         "ataque": 4,
-        "posición": "delantero"
+        "posición": "Delantero"
     },
     "Jugador2": {
         "name": "Mariano",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
-        "posición": "defensa"
+        "posición": "Defensa"
     }
 }
