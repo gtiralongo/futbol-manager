@@ -20,51 +20,50 @@
         "ataque": 3,
         "posición": "Defensa"
     },
-    
     "Jugador4": {
-        "name": "Mariano",
+        "name": "JUan",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
         "posición": "Defensa"
     },
     "Jugador5": {
-        "name": "Mariano",
+        "name": "Pedro",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
         "posición": "Defensa"
     },
     "Jugador6": {
-        "name": "Mariano",
+        "name": "Gus",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
         "posición": "Defensa"
     },
     "Jugador7": {
-        "name": "Mariano",
+        "name": "Her",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
         "posición": "Defensa"
     },
     "Jugador8": {
-        "name": "Mariano",
+        "name": "Nan",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
         "posición": "Defensa"
     },
     "Jugador9": {
-        "name": "Mariano",
+        "name": "Do",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
         "posición": "Defensa"
     },
     "Jugador10": {
-        "name": "Mariano",
+        "name": "ming",
         "velocidad": 2,
         "defensa": 4,
         "ataque": 3,
