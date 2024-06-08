@@ -146,16 +146,17 @@ def add_and_select_teams_page():
         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
         
         st.write("Equipo 1:")
-        for player in teams['Team 1']:
-            st.write(player['name'])
         st.write("Promedio de habilidades del Equipo 1:")
         st.write(f"Velocidad: {avg_team1['velocidad']:.2f}, Defensa: {avg_team1['defensa']:.2f}, Ataque: {avg_team1['ataque']:.2f}")
 
-        st.write("Equipo 2:")
-        for player in teams['Team 2']:
+        for player in teams['Team 1']:
             st.write(player['name'])
+        
+        st.write("Equipo 2:")
         st.write("Promedio de habilidades del Equipo 2:")
         st.write(f"Velocidad: {avg_team2['velocidad']:.2f}, Defensa: {avg_team2['defensa']:.2f}, Ataque: {avg_team2['ataque']:.2f}")
+        for player in teams['Team 2']:
+            st.write(player['name'])
 
 
 # Navegación
