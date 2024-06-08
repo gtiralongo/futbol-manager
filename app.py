@@ -99,7 +99,7 @@ def add_players_page():
     st.session_state["anotados"] = anotados
 
     if st.button("Guardar Jugadores Anotados"):
-        save_data(anotados, filename='anotados.json')
+        save_data(anotados, 'anotados.json')
         st.success("Jugadores anotados guardados.")
 
 # Función para equilibrar equipos
