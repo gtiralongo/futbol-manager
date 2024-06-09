@@ -1,7 +1,6 @@
 import streamlit as st
 import json
 from random import shuffle
-import subprocess
 
 # Función para cargar datos
 def load_data(filename='data.json'):
@@ -24,14 +23,6 @@ def save_data(data, filename='data.json'):
         st.success("Datos guardados exitosamente.")
     except Exception as e:
         st.error(f"Error al guardar los datos: {e}")
-
-# Función para hacer commit y push a GitHub
-def git_push():
-    try:
-        result = subprocess.run(["python", "git_push.py"], check=True, capture_output=True, text=True)
-        st.success("Archivo data.json subido exitosamente.")
-    except subprocess.CalledProcessError as e:
-        st.error(f"Error durante la ejecución de git: {e.stderr}")
 
 # Función para equilibrar equipos
 def balance_teams(players, num_players_per_team):
@@ -102,7 +93,7 @@ def edit_player_page():
         player_data["defensa"] = defensa
         player_data["ataque"] = ataque
         player_data["posición"] = posición
-        save_data(data)
+        save_data(data,"data.json")
 
 # Página para agregar un nuevo jugador
 def add_new_player_page():
@@ -124,7 +115,6 @@ def add_new_player_page():
                 "posición": new_posición
             }
             save_data(data, 'data.json')
-            git_push()  # Llamar a la función para hacer commit y push
         else:
             st.warning("El nombre del jugador no puede estar vacío.")
 
