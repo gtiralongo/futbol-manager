@@ -150,7 +150,7 @@ def add_and_select_teams_page():
     if st.button("Formar Equipos"):
         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
         
-         st.write("Equipo 1:")
+        st.write("Equipo 1:")
         for player in teams['Team 1']:
             st.write(player['name'])
         st.write("Promedio de habilidades del Equipo 1:")
