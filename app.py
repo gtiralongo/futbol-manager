@@ -67,6 +67,43 @@ def balance_teams(players, num_players_per_team):
 
     return teams, avg_team1, avg_team2
 
+# Página para mostrar jugadores (para verificar la carga de datos)
+def show_players_page():
+    st.title("Lista de Jugadores")
+    data = load_data("data.json")
+
+    if not data:
+        st.warning("No hay jugadores disponibles para mostrar.")
+        return
+
+    for key, player in data.items():
+        st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
+
+# Página para editar jugadores
+def edit_player_page():
+    st.title("Editar Jugadores")
+    data = load_data("data.json")
+
+    if not data:
+        st.warning("No hay jugadores disponibles para editar.")
+        return
+
+    player_names = list(data.keys())
+    selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
+    player_data = data[selected_player]
+
+    velocidad = st.slider("Velocidad", 0, 100, player_data["velocidad"])
+    defensa = st.slider("Defensa", 0, 100, player_data["defensa"])
+    ataque = st.slider("Ataque", 0, 100, player_data["ataque"])
+    posición = st.selectbox("Posición", ["delantero", "defensa", "centrocampista", "portero"], index=["delantero", "defensa", "centrocampista", "portero"].index(player_data["posición"]))
+
+    if st.button("Guardar cambios"):
+        player_data["velocidad"] = velocidad
+        player_data["defensa"] = defensa
+        player_data["ataque"] = ataque
+        player_data["posición"] = posición
+        save_data(data)
+
 # Página para agregar un nuevo jugador
 def add_new_player_page():
     st.header("Agregar Nuevo Jugador")
@@ -133,7 +170,7 @@ def add_and_select_teams_page():
 
 # Navegación
 st.sidebar.title("Navegación")
-page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores","Agregar Jugadores Nuevo"])
+page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores","Agregar Jugadores Nuevo","Mostrar jugadores"])
 
 if page == "Bienvenida":
     welcome_page()
@@ -143,3 +180,5 @@ elif page == "Editar Jugadores":
     edit_player_page()
 elif page == "Agregar Jugadores Nuevo":
     add_new_player_page()
+elif page == "Mostrar jugadores":
+    show_players_page()
