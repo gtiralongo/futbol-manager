@@ -61,8 +61,10 @@ def balance_teams(players, num_players_per_team):
 
 # Página para mostrar jugadores (para verificar la carga de datos)
 def show_players_page():
-    st.header("Lista de Jugadores")
     data = load_data("data.json")
+    col1, col2 = st.columns(2)
+    col1.st.header("Lista de Jugadores")
+    col2.metric(f"{len(data)}")
 
     if not data:
         st.warning("No hay jugadores disponibles para mostrar.")
