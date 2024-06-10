@@ -123,7 +123,7 @@ def edit_player_page():
         player_data["ataque"] = ataque
         player_data["posición"] = posición
         save_data(data)
-
+    st.json(load_data("data.json"))
     # st.write("---")
     # st.header("Agregar Nuevo Jugador")
     # new_name = st.text_input("Nombre del jugador")
@@ -167,6 +167,7 @@ def add_new_player_page():
             save_data(data, 'data.json')
         else:
             st.warning("El nombre del jugador no puede estar vacío.")
+    st.json(load_data("data.json"))
 
 
 # Página para anotar jugadores y seleccionar equipos
