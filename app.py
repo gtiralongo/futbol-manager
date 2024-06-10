@@ -186,7 +186,7 @@ def add_and_select_teams_page():
 # Mostrar estadísticas de los jugadores
     st.write("Jugadores anotados:")
     for player in st.session_state.anotados:
-    st.write(f"{player}")
+        st.write(f"{player}")
 
 # Mostrar los equipos formados
     if st.button("Formar Equipos"):
