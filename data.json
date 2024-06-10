@@ -63,20 +63,6 @@
     "posición": "Defensa"
   },
   "Jugador10": {
-    "name": "ming",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador11": {
-    "name": "Agus",
-    "velocidad": 2,
-    "defensa": 3,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador12": {
     "name": "Pelotas",
     "velocidad": 3,
     "defensa": 2,
