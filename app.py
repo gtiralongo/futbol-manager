@@ -215,6 +215,8 @@ page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Se
 
 if page == "Bienvenida":
     st.sidebar.image("img/img1.jpg")
+    st.sidebar.write("https://www.instagram.com/futbolcumbancha?igsh=MWYyYjRlMWE4YWJsZA==")
+    st.sidebar.write("http://revivitupartido.com/")
     welcome_page()
 elif page == "Anotar y Seleccionar Equipos":
     st.sidebar.image("img/img2.jpeg")
