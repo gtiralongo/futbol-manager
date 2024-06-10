@@ -111,18 +111,9 @@ def edit_player_page():
         return
 
     player_names = [data[player]["name"] for player in data]
-    # selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
-    # player_data = next(data[player] for player in data if data[player]["name"] == selected_player)
-    # velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
-    # defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
-    # ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
-    # posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
-    col1, col2 = st.columns(3)
-    with col1:
-        selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
-        player_data = next(data[player] for player in data if data[player]["name"] == selected_player)
-    with col2:
-        posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
+    selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
+    player_data = next(data[player] for player in data if data[player]["name"] == selected_player)
+    posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
     velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
