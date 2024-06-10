@@ -227,12 +227,12 @@ def welcome_page():
 
     st.title("Bienvenido al Seleccionador de Equipos ⚽")
     st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
-    st.image("img/img1.jpg")
     show_players_page()
     add_new_player_page()
     
 # Navegación
 st.sidebar.title("Navegación")
+st.image("img/img1.jpg")
 page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores"])#,"Agregar Jugadores Nuevo"])
 
 if page == "Bienvenida":
