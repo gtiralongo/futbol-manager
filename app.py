@@ -176,6 +176,7 @@ def add_and_select_teams_page():
     anotados = st.session_state.get("anotados", [])
 
     st.write("Lista de Jugadores:")
+    st.metric("Jugadores anotados", f"{len(anotados)}")
     st.write(f"Jugadores anotados {len(anotados)}")
     for key, player in data.items():
         if st.checkbox(f"{player['name']}", key=key):
