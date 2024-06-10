@@ -63,7 +63,7 @@ def balance_teams(players, num_players_per_team):
 def show_players_page():
     data = load_data("data.json")
     col1, col2 = st.columns(2)
-    col1.st.header("Lista de Jugadores")
+    col1.header("Lista de Jugadores")
     col2.metric(f"{len(data)}")
 
     if not data:
