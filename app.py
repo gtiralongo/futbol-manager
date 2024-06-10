@@ -165,6 +165,7 @@ def welcome_page():
 #             st.write(player['name'])
 
 def add_and_select_teams_page():
+    data = load_data("data.json")
     if 'anotados' not in st.session_state:
         st.session_state.anotados = []
 
