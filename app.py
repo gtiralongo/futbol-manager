@@ -166,7 +166,7 @@ def welcome_page():
 
 def add_and_select_teams_page():
     if 'anotados' not in st.session_state:
-    st.session_state.anotados = []
+        st.session_state.anotados = []
 
 # Mostrar la lista de jugadores en una tabla editable
     st.title("Anotar Jugadores y Seleccionar Equipos")
