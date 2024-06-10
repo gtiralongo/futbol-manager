@@ -232,7 +232,7 @@ def welcome_page():
     
 # Navegación
 st.sidebar.title("Navegación")
-page.st.aidebar.image("img/img1.jpg")
+st.aidebar.image("img/img1.jpg")
 page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores"])#,"Agregar Jugadores Nuevo"])
 
 if page == "Bienvenida":
