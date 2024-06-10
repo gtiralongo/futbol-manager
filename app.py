@@ -64,7 +64,7 @@ def show_players_page():
     data = load_data("data.json")
     col1, col2 = st.columns(2)
     col1.header("Lista de Jugadores")
-    col2.metric(f"{len(data)}")
+    col2.metric("Jugadores",f"{len(data)}")
 
     if not data:
         st.warning("No hay jugadores disponibles para mostrar.")
