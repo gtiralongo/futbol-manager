@@ -86,7 +86,7 @@ def edit_player_page():
     velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
-    posición = st.selectbox("Posición", ["delantero", "defensa", "centrocampista", "portero"], index=["delantero", "defensa", "centrocampista", "portero"].index(player_data["posición"]))
+    posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
 
     if st.button("Guardar cambios"):
         player_data["velocidad"] = velocidad
