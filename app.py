@@ -69,7 +69,9 @@ def show_players_page():
         return
 
     for key, player in data.items():
-        st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
+        df = pd.DataFrame(data)
+        st.table(df)
+        # st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
 
 # Página para editar jugadores
 def edit_player_page():
