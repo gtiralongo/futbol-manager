@@ -2,6 +2,7 @@ import streamlit as st
 import json
 from random import shuffle
 import pandas as pd
+import os
 
 # Función para cargar datos
 def load_data(filename='data.json'):
