@@ -169,7 +169,7 @@ def add_and_select_teams_page():
     data = load_data("data.json")
 
     # Crear un DataFrame a partir de la lista de diccionarios
-    df = pd.DataFrame(data)
+    df = pd.DataFrame([data[player] for player in data])
 
     st.write("Lista de Jugadores:")
     df = st.data_editor(df, num_rows="auto")
