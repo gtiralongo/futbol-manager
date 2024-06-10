@@ -190,7 +190,7 @@ def add_and_select_teams_page():
         st.warning("No hay jugadores anotados disponibles.")
         return
 
-    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=max_value=len(anotados)//2, step=1)
+    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=len(anotados)//2, step=1)
 
     st.metric("Jugadores anotados", f"{len(anotados)}")
     st.write(f"Jugadores anotados {len(anotados)}")
