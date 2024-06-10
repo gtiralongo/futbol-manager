@@ -68,10 +68,12 @@ def show_players_page():
         st.warning("No hay jugadores disponibles para mostrar.")
         return
 
-    for key, player in data.items():
-        df = pd.DataFrame(player)
+        df = pd.DataFrame(data.keys())
         st.table(df)
-        # st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
+    # for key, player in data.items():
+    #     df = pd.DataFrame(player,)
+    #     st.table(df)
+    #     # st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
 
 # Página para editar jugadores
 def edit_player_page():
