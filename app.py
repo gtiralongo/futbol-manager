@@ -190,7 +190,7 @@ def add_and_select_teams_page():
         st.warning("No hay jugadores anotados disponibles.")
         return
 
-    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=1, step=1)
+    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=max_value=len(anotados)//2, step=1)
 
     st.metric("Jugadores anotados", f"{len(anotados)}")
     st.write(f"Jugadores anotados {len(anotados)}")
@@ -201,7 +201,7 @@ def add_and_select_teams_page():
         col1, col2, col3 = st.columns(3)
         col1.metric("Velocidad", f"{avg_team1['velocidad']:.2f}")
         col2.metric("Defensa", f"{avg_team1['defensa']:.2f}")
-        col3.metric("Ataque", f"{avg_team2['ataque']:.2f}")
+        col3.metric("Ataque", f"{avg_team1['ataque']:.2f}")
 
         for player in teams['Team 1']:
             st.write(player['name'])
