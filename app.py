@@ -75,15 +75,40 @@ def show_players_page():
     st.table(df)
 
 # Página para editar jugadores
+# def edit_player_page():
+#     st.title("Editar Jugadores")
+#     data = load_data("data.json")
+
+#     if not data:
+#         st.warning("No hay jugadores disponibles para editar.")
+#         return
+
+#     player_names = [data[player]["name"] for player in data]
+#     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
+#     player_data = data[selected_player]
+
+#     velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
+#     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
+#     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
+#     posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
+
+#     if st.button("Guardar cambios"):
+#         player_data["velocidad"] = velocidad
+#         player_data["defensa"] = defensa
+#         player_data["ataque"] = ataque
+#         player_data["posición"] = posición
+#         save_data(data,"data.json")
+
+# Página para editar jugadores
 def edit_player_page():
     st.title("Editar Jugadores")
-    data = load_data("data.json")
+    data = load_data()
 
     if not data:
         st.warning("No hay jugadores disponibles para editar.")
         return
 
-    player_names = [data[player]["name"] for player in data]
+    player_names = list(data.keys())
     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
     player_data = data[selected_player]
 
@@ -97,7 +122,28 @@ def edit_player_page():
         player_data["defensa"] = defensa
         player_data["ataque"] = ataque
         player_data["posición"] = posición
-        save_data(data,"data.json")
+        save_data(data)
+
+    # st.write("---")
+    # st.header("Agregar Nuevo Jugador")
+    # new_name = st.text_input("Nombre del jugador")
+    # new_velocidad = st.slider("Velocidad", 0, 100, 50)
+    # new_defensa = st.slider("Defensa", 0, 100, 50)
+    # new_ataque = st.slider("Ataque", 0, 100, 50)
+    # new_posición = st.selectbox("Posición", ["delantero", "defensa", "centrocampista", "portero"])
+
+    # if st.button("Agregar Jugador"):
+    #     if new_name:
+    #         data[f"Jugador{len(data)+1}"] = {
+    #             "name": new_name,
+    #             "velocidad": new_velocidad,
+    #             "defensa": new_defensa,
+    #             "ataque": new_ataque,
+    #             "posición": new_posición
+    #         }
+    #         save_data(data)
+    #     else:
+    #         st.warning("El nombre del jugador no puede estar vacío.")
 
 # Página para agregar un nuevo jugador
 def add_new_player_page():
