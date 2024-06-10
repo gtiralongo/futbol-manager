@@ -204,6 +204,10 @@ def add_and_select_teams_page():
             st.write(player['name'])
 
         st.write("Equipo 2:")
+        col1, col2, col3 = st.columns(3)
+col1.metric("Velocidad", f"{avg_team2['velocidad']:.2f}")
+col2.metric("Defensa", f"{avg_team2['defensa']:.2f}")
+col3.metric("Ataque", f"avg_team2['ataque']:.2f}")
         st.write(f"Velocidad: {avg_team2['velocidad']:.2f}  -  Defensa: {avg_team2['defensa']:.2f}  -  Ataque: {avg_team2['ataque']:.2f}")
         for player in teams['Team 2']:
             st.write(player['name'])
