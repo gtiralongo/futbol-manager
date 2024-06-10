@@ -1,9 +1,9 @@
 {
     "Jugador1": {
-        "name": "Gustavo",
+        "name": "GT",
         "velocidad": 5,
-        "defensa": 3,
-        "ataque": 4,
+        "defensa": 2,
+        "ataque": 3,
         "posición": "Delantero"
     },
     "Jugador2": {
