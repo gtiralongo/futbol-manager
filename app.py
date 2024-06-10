@@ -225,14 +225,14 @@ def add_and_select_teams_page():
 # Página de bienvenida
 def welcome_page():
 
-    st.title("Bienvenido a la Selección de Jugadores")
-    st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
+    st.title("Bienvenido a la Selección de Jugadores ⚽")
+    st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
     show_players_page()
     add_new_player_page()
     
 # Navegación
 st.sidebar.title("Navegación")
-page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores"])#,"Agregar Jugadores Nuevo"])
+page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida 🖐","Anotar y Seleccionar Equipos", "Editar Jugadores"])#,"Agregar Jugadores Nuevo"])
 
 if page == "Bienvenida":
     welcome_page()
