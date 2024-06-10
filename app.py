@@ -128,42 +128,77 @@ def welcome_page():
     st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
 
 # Página para anotar jugadores y seleccionar equipos
+# def add_and_select_teams_page():
+#     st.title("Anotar Jugadores y Seleccionar Equipos")
+#     data = load_data("data.json")
+#     anotados = st.session_state.get("anotados", [])
+
+#     st.write("Lista de Jugadores:")
+#     for key, player in data.items():
+#         if st.checkbox(f"{player['name']}", key=key):
+#             if player not in anotados:
+#                 anotados.append(player)
+#         else:
+#             if player in anotados:
+#                 anotados.remove(player)
+
+#     st.session_state["anotados"] = anotados
+
+#     if not anotados:
+#         st.warning("No hay jugadores anotados disponibles.")
+#         return
+
+#     num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=1, step=1)
+
+#     st.write(f"Jugadores anotados {len(anotados)}")
+#     if st.button("Formar Equipos"):
+#         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
+        
+#         st.write("Equipo 1:")
+#         st.write(f"Velocidad: {avg_team1['velocidad']:.2f}\n Defensa: {avg_team1['defensa']:.2f}\n Ataque: {avg_team1['ataque']:.2f}")
+#         for player in teams['Team 1']:
+#             st.write(player['name'])
+
+#         st.write("Equipo 2:")
+#         st.write(f"Velocidad: {avg_team2['velocidad']:.2f}\n Defensa: {avg_team2['defensa']:.2f}\n Ataque: {avg_team2['ataque']:.2f}")
+#         for player in teams['Team 2']:
+#             st.write(player['name'])
+
 def add_and_select_teams_page():
     st.title("Anotar Jugadores y Seleccionar Equipos")
     data = load_data("data.json")
-    anotados = st.session_state.get("anotados", [])
 
     st.write("Lista de Jugadores:")
+    df = st.data_editor(data, num_rows="auto")
+
+    # Actualizar la columna "Seleccionado" según las marcas
     for key, player in data.items():
         if st.checkbox(f"{player['name']}", key=key):
-            if player not in anotados:
-                anotados.append(player)
+            df.loc[key, 'Seleccionado'] = True
         else:
-            if player in anotados:
-                anotados.remove(player)
+            df.loc[key, 'Seleccionado'] = False
 
-    st.session_state["anotados"] = anotados
+    # Filtrar jugadores seleccionados
+    selected_players = df[df['Seleccionado'] == True]
 
-    if not anotados:
-        st.warning("No hay jugadores anotados disponibles.")
-        return
+    if not selected_players.empty:
+        num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(selected_players)//2, value=1, step=1)
 
-    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=1, step=1)
+        st.write(f"Jugadores anotados {len(selected_players)}")
+        if st.button("Formar Equipos"):
+            teams, avg_team1, avg_team2 = balance_teams(selected_players, num_players_per_team)
 
-    st.write(f"Jugadores anotados {len(anotados)}")
-    if st.button("Formar Equipos"):
-        teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
-        
-        st.write("Equipo 1:")
-        st.write(f"Velocidad: {avg_team1['velocidad']:.2f}\n Defensa: {avg_team1['defensa']:.2f}\n Ataque: {avg_team1['ataque']:.2f}")
-        for player in teams['Team 1']:
-            st.write(player['name'])
+            st.write("Equipo 1:")
+            st.write(f"Velocidad: {avg_team1['velocidad']:.2f}\n Defensa: {avg_team1['defensa']:.2f}\n Ataque: {avg_team1['ataque']:.2f}")
+            for player in teams['Team 1']:
+                st.write(player['name'])
 
-        st.write("Equipo 2:")
-        st.write(f"Velocidad: {avg_team2['velocidad']:.2f}\n Defensa: {avg_team2['defensa']:.2f}\n Ataque: {avg_team2['ataque']:.2f}")
-        for player in teams['Team 2']:
-            st.write(player['name'])
-
+            st.write("Equipo 2:")
+            st.write(f"Velocidad: {avg_team2['velocidad']:.2f}\n Defensa: {avg_team2['defensa']:.2f}\n Ataque: {avg_team2['ataque']:.2f}")
+            for player in teams['Team 2']:
+                st.write(player['name'])
+    else:
+        st.warning("No hay jugadores seleccionados para anotar.")
 
 # Navegación
 st.sidebar.title("Navegación")
