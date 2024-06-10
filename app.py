@@ -69,7 +69,7 @@ def show_players_page():
         return
 
     # Crear un DataFrame
-    df = pd.DataFrame([data[player] for player in data] ,columns=['name', 'velocidad', 'defensa', 'ataque', "Posición"])
+    df = pd.DataFrame([data[player] for player in data] ,columns=['name', 'velocidad', 'defensa', 'ataque', "posición"])
     
     # Mostrar la tabla
     st.table(df)
