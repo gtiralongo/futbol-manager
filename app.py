@@ -61,7 +61,7 @@ def balance_teams(players, num_players_per_team):
 
 # Página para mostrar jugadores (para verificar la carga de datos)
 def show_players_page():
-    st.hedeer("Lista de Jugadores")
+    st.header("Lista de Jugadores")
     data = load_data("data.json")
 
     if not data:
