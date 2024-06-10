@@ -108,14 +108,14 @@ def edit_player_page():
         st.warning("No hay jugadores disponibles para editar.")
         return
 
-    player_names = [data[player]["name"] for player in data]
+    player_names = [player["name"] for player in data]
     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
-    player_data = data[selected_player]
+    player_data = next(player for player in data if player["name"] == selected_player)
 
     velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
-    posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
+    posición = st.selectbox("Posición", ["delantero", "defensa", "centrocampista", "portero"], index=["delantero", "defensa", "centrocampista", "portero"].index(player_data["posición"]))
 
     if st.button("Guardar cambios"):
         player_data["velocidad"] = velocidad
