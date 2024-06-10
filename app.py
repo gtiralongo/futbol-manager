@@ -122,10 +122,6 @@ def add_new_player_page():
         else:
             st.warning("El nombre del jugador no puede estar vacío.")
 
-# Página de bienvenida
-def welcome_page():
-    st.title("Bienvenido a la Selección de Jugadores")
-    st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
 
 # Página para anotar jugadores y seleccionar equipos
 def add_and_select_teams_page():
@@ -164,10 +160,15 @@ def add_and_select_teams_page():
         for player in teams['Team 2']:
             st.write(player['name'])
 
-
+# Página de bienvenida
+def welcome_page():
+    st.title("Bienvenido a la Selección de Jugadores")
+    st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
+    show_players_page()
+    
 # Navegación
 st.sidebar.title("Navegación")
-page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores","Agregar Jugadores Nuevo","Mostrar jugadores"])
+page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores","Agregar Jugadores Nuevo"])
 
 if page == "Bienvenida":
     welcome_page()
@@ -177,5 +178,3 @@ elif page == "Editar Jugadores":
     edit_player_page()
 elif page == "Agregar Jugadores Nuevo":
     add_new_player_page()
-elif page == "Mostrar jugadores":
-    show_players_page()
