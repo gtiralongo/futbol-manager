@@ -128,70 +128,32 @@ def welcome_page():
     st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
 
 # Página para anotar jugadores y seleccionar equipos
-# def add_and_select_teams_page():
-#     st.title("Anotar Jugadores y Seleccionar Equipos")
-#     data = load_data("data.json")
-#     anotados = st.session_state.get("anotados", [])
-
-#     st.write("Lista de Jugadores:")
-#     for key, player in data.items():
-#         if st.checkbox(f"{player['name']}", key=key):
-#             if player not in anotados:
-#                 anotados.append(player)
-#         else:
-#             if player in anotados:
-#                 anotados.remove(player)
-
-#     st.session_state["anotados"] = anotados
-
-#     if not anotados:
-#         st.warning("No hay jugadores anotados disponibles.")
-#         return
-
-#     num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=1, step=1)
-
-#     st.write(f"Jugadores anotados {len(anotados)}")
-#     if st.button("Formar Equipos"):
-#         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
-        
-#         st.write("Equipo 1:")
-#         st.write(f"Velocidad: {avg_team1['velocidad']:.2f}\n Defensa: {avg_team1['defensa']:.2f}\n Ataque: {avg_team1['ataque']:.2f}")
-#         for player in teams['Team 1']:
-#             st.write(player['name'])
-
-#         st.write("Equipo 2:")
-#         st.write(f"Velocidad: {avg_team2['velocidad']:.2f}\n Defensa: {avg_team2['defensa']:.2f}\n Ataque: {avg_team2['ataque']:.2f}")
-#         for player in teams['Team 2']:
-#             st.write(player['name'])
-
 def add_and_select_teams_page():
-    data = load_data("data.json")
-    if 'anotados' not in st.session_state:
-        st.session_state.anotados = []
-
-# Mostrar la lista de jugadores en una tabla editable
     st.title("Anotar Jugadores y Seleccionar Equipos")
+    data = load_data("data.json")
+    anotados = st.session_state.get("anotados", [])
+
     st.write("Lista de Jugadores:")
-    edited_df = st.data_editor(pd.DataFrame([data[player] for player in data]).T)
+    for key, player in data.items():
+        if st.checkbox(f"{player['name']}", key=key):
+            if player not in anotados:
+                anotados.append(player)
+        else:
+            if player in anotados:
+                anotados.remove(player)
 
-# Procesar los cambios en la tabla
-    if edited_df:
-        for index, row in edited_df.iterrows():
-            if row['selected']:
-                if row['name'] not in st.session_state.anotados:
-                    st.session_state.anotados.append(row['name'])
-            else:
-                if row['name'] in st.session_state.anotados:
-                    st.session_state.anotados.remove(row['name'])
+    st.session_state["anotados"] = anotados
 
-# Mostrar estadísticas de los jugadores
-    st.write("Jugadores anotados:")
-    for player in st.session_state.anotados:
-        st.write(f"{player}")
+    if not anotados:
+        st.warning("No hay jugadores anotados disponibles.")
+        return
 
-# Mostrar los equipos formados
+    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=1, step=1)
+
+    st.write(f"Jugadores anotados {len(anotados)}")
     if st.button("Formar Equipos"):
-        teams, avg_team1, avg_team2 = balance_teams(st.session_state.anotados, num_players_per_team)
+        teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
+        
         st.write("Equipo 1:")
         st.write(f"Velocidad: {avg_team1['velocidad']:.2f}\n Defensa: {avg_team1['defensa']:.2f}\n Ataque: {avg_team1['ataque']:.2f}")
         for player in teams['Team 1']:
@@ -201,6 +163,7 @@ def add_and_select_teams_page():
         st.write(f"Velocidad: {avg_team2['velocidad']:.2f}\n Defensa: {avg_team2['defensa']:.2f}\n Ataque: {avg_team2['ataque']:.2f}")
         for player in teams['Team 2']:
             st.write(player['name'])
+
 
 # Navegación
 st.sidebar.title("Navegación")
