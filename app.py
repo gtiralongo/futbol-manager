@@ -69,11 +69,11 @@ def show_players_page():
         return
 
     # Crear un DataFrame vacío
-    df = pd.DataFrame(columns=['name', 'velocidad', 'defensa', 'ataque', 'posición'])
+    df = pd.DataFrame(data,columns=['name', 'velocidad', 'defensa', 'ataque', 'posición'])
 
-    # Agregar filas al DataFrame
-    for key, player in data.items():
-        df = df.append(pd.Series(player, index=df.columns, name=key), ignore_index=True)
+    # # Agregar filas al DataFrame
+    # for key, player in data.items():
+    #     df = df.append(pd.Series(player, index=df.columns, name=key), ignore_index=True)
 
     # Mostrar la tabla
     st.table(df)
