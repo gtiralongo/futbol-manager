@@ -117,7 +117,7 @@ def edit_player_page():
     # defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
     # ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
     # posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
-     col1, col2 = st.columns(3)
+    col1, col2 = st.columns(3)
     with col1:
         selected_player = st.selectbox("Selecciona un jugador para editar", player_names
         player_data = next(data[player] for player in data if data[player]["name"] == selected_player)
