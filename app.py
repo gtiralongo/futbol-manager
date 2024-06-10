@@ -204,7 +204,7 @@ def add_and_select_teams_page():
             st.write(player['name'])
 
         st.write("Equipo 2:")
-        st.write(f"Velocidad: {avg_team2['velocidad']:.2f}\n Defensa: {avg_team2['defensa']:.2f}\n Ataque: {avg_team2['ataque']:.2f}")
+        st.write(f"Velocidad: {avg_team2['velocidad']:.2f}  -  Defensa: {avg_team2['defensa']:.2f}  -  Ataque: {avg_team2['ataque']:.2f}")
         for player in teams['Team 2']:
             st.write(player['name'])
 
