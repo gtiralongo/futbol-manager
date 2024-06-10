@@ -68,28 +68,11 @@ def show_players_page():
         st.warning("No hay jugadores disponibles para mostrar.")
         return
 
-    # Crear un DataFrame vacío
-    df = pd.DataFrame([data[player] for player in data],columns=['name', 'velocidad', 'defensa', 'ataque', 'posición'],display.index=none)
-
-    # # Agregar filas al DataFrame
-    # for key, player in data.items():
-    #     df = df.append(pd.Series(player, index=df.columns, name=key), ignore_index=True)
-
+    # Crear un DataFrame
+    df = pd.DataFrame([data[player] for player in data],columns=['name', 'velocidad', 'defensa', 'ataque')
+    
     # Mostrar la tabla
     st.table(df)
-
-# def show_players_page():
-#     st.title("Lista de Jugadores")
-#     data = load_data("data.json")
-
-#     if not data:
-#         st.warning("No hay jugadores disponibles para mostrar.")
-#         return
-
-#     for key, player in data.items():
-#         df = pd.DataFrame(data, index='name')
-#         st.table(df)
-    #     # st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
 
 # Página para editar jugadores
 def edit_player_page():
