@@ -83,7 +83,7 @@ def edit_player_page():
         st.warning("No hay jugadores disponibles para editar.")
         return
 
-    player_names = [[data[player]["name"] for player in data]
+    player_names = [data[player]["name"] for player in data]
     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
     player_data = data[selected_player]
 
