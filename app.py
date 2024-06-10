@@ -176,8 +176,6 @@ def add_and_select_teams_page():
     anotados = st.session_state.get("anotados", [])
 
     st.write("Lista de Jugadores:")
-    st.metric("Jugadores anotados", f"{len(anotados)}")
-    st.write(f"Jugadores anotados {len(anotados)}")
     for key, player in data.items():
         if st.checkbox(f"{player['name']}", key=key):
             if player not in anotados:
@@ -194,6 +192,8 @@ def add_and_select_teams_page():
 
     num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=1, step=1)
 
+    st.metric("Jugadores anotados", f"{len(anotados)}")
+    st.write(f"Jugadores anotados {len(anotados)}")
     if st.button("Formar Equipos"):
         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
         
