@@ -169,7 +169,7 @@ def add_and_select_teams_page():
     data = load_data("data.json")
 
     st.write("Lista de Jugadores:")
-    df = st.data_editor([data[player] for player in data].append("Anotado":"FALSE"), num_rows="auto")
+    df = st.data_editor([data[player] for player in data].append({"Anotado":"FALSE"}), num_rows="auto")
     anotados = st.session_state.get("anotados", [])
 
     # Actualizar la columna "Seleccionado" según las marcas
