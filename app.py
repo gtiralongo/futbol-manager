@@ -238,10 +238,10 @@ if page == "Bienvenida":
     st.sidebar.image("img/img1.jpg")
     welcome_page()
 elif page == "Anotar y Seleccionar Equipos":
-    st.sidebar.image("img/img2.jpg")
+    st.sidebar.image("img/img2.jpeg")
     add_and_select_teams_page()
 elif page == "Editar Jugadores":
-    st.sidebar.image("img/img3.jpg")
+    st.sidebar.image("img/img3.jpeg")
     edit_player_page()
 # elif page == "Agregar Jugadores Nuevo":
 #     add_new_player_page()
