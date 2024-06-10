@@ -221,7 +221,7 @@ def add_and_select_teams_page():
 
 # Página de bienvenida
 def welcome_page():
-    st.write("Key:", st.secrets["key"]["secrets])
+    st.write("Key:", st.secrets["key"]["secrets"])
     st.title("Bienvenido a la Selección de Jugadores")
     st.write("Esta aplicación te ayudará a seleccionar jugadores para dos equipos basados en sus características.")
     show_players_page()
