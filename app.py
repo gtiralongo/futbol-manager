@@ -168,16 +168,18 @@ def add_and_select_teams_page():
     st.title("Anotar Jugadores y Seleccionar Equipos")
     data = load_data("data.json")
 
+    # Crear un DataFrame a partir de la lista de diccionarios
+    df = pd.DataFrame(data)
+
     st.write("Lista de Jugadores:")
-    df = st.data_editor([data[player] for player in data].append({"Anotado":"FALSE"}), num_rows="auto")
-    anotados = st.session_state.get("anotados", [])
+    df = st.data_editor(df, num_rows="auto")
 
     # Actualizar la columna "Seleccionado" según las marcas
-    for key, player in data.items():
-        if st.checkbox(f"{player['name']}", key=key):
-            df.loc[key, 'Seleccionado'] = True
+    for player in df.index:
+        if st.checkbox(f"{df.loc[player]['name']}", key=player):
+            df.loc[player, 'Seleccionado'] = True
         else:
-            df.loc[key, 'Seleccionado'] = False
+            df.loc[player, 'Seleccionado'] = False
 
     # Filtrar jugadores seleccionados
     selected_players = df[df['Seleccionado'] == True]
