@@ -69,7 +69,7 @@ def show_players_page():
         return
 
     for key, player in data.items():
-        df = pd.DataFrame(keys)
+        df = pd.DataFrame(key)
         st.table(df)
     #     # st.write(f"Nombre: {player['name']}, Velocidad: {player['velocidad']}, Defensa: {player['defensa']}, Ataque: {player['ataque']}, Posición: {player['posición']}")
 
