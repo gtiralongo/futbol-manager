@@ -192,10 +192,11 @@ def add_and_select_teams_page():
     if not anotados:
         st.warning("No hay jugadores anotados disponibles.")
         return
+    col1, col2 = st.columns(2)
+    col1.metric("Jugadores anotados", f"{len(anotados)}")
+    col2.num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=len(anotados)//2, step=1)
 
-    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=len(anotados)//2, step=1)
-
-    st.metric("Jugadores anotados", f"{len(anotados)}")
+    # st.metric("Jugadores anotados", f"{len(anotados)}")
     # st.write(f"Jugadores anotados {len(anotados)}")
     if st.button("Formar Equipos"):
         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
