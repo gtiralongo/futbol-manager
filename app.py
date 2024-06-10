@@ -69,8 +69,7 @@ def show_players_page():
         return
 
     # Crear un DataFrame vacío
-    df = pd.DataFrame([data[player] for player in data],columns=['name', 'velocidad', 'defensa', 'ataque', 'posición'])
-    df.index = None
+    df = pd.DataFrame([data[player] for player in data],columns=['name', 'velocidad', 'defensa', 'ataque', 'posición'],display.index=none)
 
     # # Agregar filas al DataFrame
     # for key, player in data.items():
