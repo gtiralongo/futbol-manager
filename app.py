@@ -197,19 +197,20 @@ def add_and_select_teams_page():
     if st.button("Formar Equipos"):
         teams, avg_team1, avg_team2 = balance_teams(anotados, num_players_per_team)
         
-        st.write("Equipo 1:")
-        st.write(f"Velocidad: {avg_team1['velocidad']:.2f}")
-        st.write(f"Defensa: {avg_team1['defensa']:.2f}")
-        st.write(f"Ataque: {avg_team1['ataque']:.2f}")
+        st.title("Equipo 1:")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Velocidad", f"{avg_team1['velocidad']:.2f}")
+        col2.metric("Defensa", f"{avg_team1['defensa']:.2f}")
+        col3.metric("Ataque", f"{avg_team2['ataque']:.2f}")
+
         for player in teams['Team 1']:
             st.write(player['name'])
 
-        st.write("Equipo 2:")
+        st.title("Equipo 2:")
         col1, col2, col3 = st.columns(3)
         col1.metric("Velocidad", f"{avg_team2['velocidad']:.2f}")
         col2.metric("Defensa", f"{avg_team2['defensa']:.2f}")
         col3.metric("Ataque", f"{avg_team2['ataque']:.2f}")
-        # st.write(f"Velocidad: {avg_team2['velocidad']:.2f}  -  Defensa: {avg_team2['defensa']:.2f}  -  Ataque: {avg_team2['ataque']:.2f}")
         for player in teams['Team 2']:
             st.write(player['name'])
 
