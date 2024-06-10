@@ -171,7 +171,7 @@ def add_and_select_teams_page():
 # Mostrar la lista de jugadores en una tabla editable
     st.title("Anotar Jugadores y Seleccionar Equipos")
     st.write("Lista de Jugadores:")
-    edited_df = st.data_editor(pd.DataFrame(data).T)
+    edited_df = st.data_editor(pd.DataFrame([data[player] for player in data]).T)
 
 # Procesar los cambios en la tabla
     if edited_df:
