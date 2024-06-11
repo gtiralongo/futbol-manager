@@ -25,6 +25,8 @@ def save_data(data, filename='data.json'):
     except Exception as e:
         st.error(f"Error al guardar los datos: {e}")
 
+
+
 # Función para equilibrar equipos
 def balance_teams(players, num_players_per_team):
     shuffle(players)
