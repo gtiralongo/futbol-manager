@@ -39,7 +39,7 @@ def git_push():
         subprocess.run(["git", "add", "data.json"], check=True)
         subprocess.run(["git", "commit", "-m", "Actualización de data.json"], check=True)
         subprocess.run(
-            ["git", "push", f"https://{username}:{token}@github.com/{username}/tu_repositorio.git"],
+            ["git", "push", f"https://{username}:{token}@github.com/{username}/futbol-manager.git"],
             check=True
         )
         st.success("Archivo data.json subido exitosamente.")
