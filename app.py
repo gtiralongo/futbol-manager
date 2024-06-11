@@ -1,4 +1,5 @@
 import streamlit as st
+import subprocess
 import json
 from random import shuffle
 import pandas as pd
@@ -25,7 +26,25 @@ def save_data(data, filename='data.json'):
     except Exception as e:
         st.error(f"Error al guardar los datos: {e}")
 
+# Función para hacer commit y push a GitHub
+def git_push():
+    try:
+        # Configura tu nombre de usuario y correo electrónico de Git desde st.secrets
+        username = st.secrets["github"]["username"]
+        email = st.secrets["github"]["email"]
+        token = st.secrets["github"]["token"]
 
+        subprocess.run(["git", "config", "--global", "user.name", username], check=True)
+        subprocess.run(["git", "config", "--global", "user.email", email], check=True)
+        subprocess.run(["git", "add", "data.json"], check=True)
+        subprocess.run(["git", "commit", "-m", "Actualización de data.json"], check=True)
+        subprocess.run(
+            ["git", "push", f"https://{username}:{token}@github.com/{username}/tu_repositorio.git"],
+            check=True
+        )
+        st.success("Archivo data.json subido exitosamente.")
+    except subprocess.CalledProcessError as e:
+        st.error(f"Error durante la ejecución de git: {e.stderr}")
 
 # Función para equilibrar equipos
 def balance_teams(players, num_players_per_team):
@@ -207,7 +226,7 @@ def add_and_select_teams_page():
 def welcome_page():
 
     st.title("Bienvenido al Seleccionador de Equipos ⚽")
-    st.write(st.secrets("key"))
+    st.write(st.secrets["github"]["email"])
     st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
     show_players_page()
     add_new_player_page()
