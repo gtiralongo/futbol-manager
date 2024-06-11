@@ -226,6 +226,7 @@ def add_and_select_teams_page():
 def welcome_page():
 
     st.title("Bienvenido al Seleccionador de Equipos ⚽")
+    st.write(st.secrets['github']['email'])
     st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
     show_players_page()
     add_new_player_page()
