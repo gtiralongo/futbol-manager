@@ -2,7 +2,7 @@
     "Jugador1": {
         "name": "GT",
         "velocidad": 5,
-        "defensa": 4,
+        "defensa": 2,
         "ataque": 3,
         "posici\u00f3n": "Delantero"
     },
