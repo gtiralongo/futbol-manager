@@ -145,7 +145,7 @@ def edit_player_page():
         player_data["ataque"] = ataque
         player_data["posición"] = posición
         save_data(data)
-    st.json(load_data("data.json"))
+    #st.json(load_data("data.json"))
     
 # Página para agregar un nuevo jugador
 def add_new_player_page():
@@ -169,7 +169,7 @@ def add_new_player_page():
             save_data(data, 'data.json')
         else:
             st.warning("El nombre del jugador no puede estar vacío.")
-    st.json(load_data("data.json"))
+    #st.json(load_data("data.json"))
 
 
 # Página para anotar jugadores y seleccionar equipos
@@ -226,7 +226,6 @@ def add_and_select_teams_page():
 def welcome_page():
 
     st.title("Bienvenido al Seleccionador de Equipos ⚽")
-    st.write(st.secrets["github"]["email"])
     st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
     show_players_page()
     add_new_player_page()
