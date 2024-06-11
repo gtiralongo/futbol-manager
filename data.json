@@ -1,72 +1,72 @@
 {
-  "Jugador1": {
-    "name": "GT",
-    "velocidad": 5,
-    "defensa": 2,
-    "ataque": 3,
-    "posición": "Delantero"
-  },
-  "Jugador2": {
-    "name": "Tin",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador3": {
-    "name": "Mariano",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador4": {
-    "name": "JUan",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador5": {
-    "name": "Pedro",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador6": {
-    "name": "Gus",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador7": {
-    "name": "Her",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador8": {
-    "name": "Nan",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador9": {
-    "name": "Do",
-    "velocidad": 2,
-    "defensa": 4,
-    "ataque": 3,
-    "posición": "Defensa"
-  },
-  "Jugador10": {
-    "name": "Pelotas",
-    "velocidad": 3,
-    "defensa": 2,
-    "ataque": 3,
-    "posición": "Delantero"
-  }
+    "Jugador1": {
+        "name": "GT",
+        "velocidad": 5,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Delantero"
+    },
+    "Jugador2": {
+        "name": "Tin",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador3": {
+        "name": "Mariano",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador4": {
+        "name": "JUan",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador5": {
+        "name": "Pedro",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador6": {
+        "name": "Gus",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador7": {
+        "name": "Her",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador8": {
+        "name": "Nan",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador9": {
+        "name": "Do",
+        "velocidad": 2,
+        "defensa": 4,
+        "ataque": 3,
+        "posici\u00f3n": "Defensa"
+    },
+    "Jugador10": {
+        "name": "Pelotas",
+        "velocidad": 3,
+        "defensa": 2,
+        "ataque": 3,
+        "posici\u00f3n": "Delantero"
+    }
 }
