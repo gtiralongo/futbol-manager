@@ -146,7 +146,7 @@ def edit_player_page():
         player_data["posición"] = posición
         save_data(data)
         git_push()
-    st.write(player_data)
+    st.write(player)
     # if st.button("Eliminar jugador"):
     #     data.pop(player_data)
     #     save_data(data)
