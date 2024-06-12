@@ -146,6 +146,11 @@ def edit_player_page():
         player_data["posición"] = posición
         save_data(data)
         git_push()
+
+    if st.button("Eliminar jugador"):
+        data.pop(player_data)
+        save_data(data)
+        git_push()
     #st.json(load_data("data.json"))
     
 # Página para agregar un nuevo jugador
