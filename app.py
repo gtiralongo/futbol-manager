@@ -139,13 +139,13 @@ def edit_player_page():
     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
     
-    # if st.button("Guardar cambios"):
-    #     player_data["velocidad"] = velocidad
-    #     player_data["defensa"] = defensa
-    #     player_data["ataque"] = ataque
-    #     player_data["posición"] = posición
-    #     save_data(data)
-    #     git_push()
+    if st.button("Guardar cambios"):
+        player_data["velocidad"] = velocidad
+        player_data["defensa"] = defensa
+        player_data["ataque"] = ataque
+        player_data["posición"] = posición
+        save_data(data)
+        git_push()
 
     if st.button("Eliminar jugador"):
         data.pop(player_data)
