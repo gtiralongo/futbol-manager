@@ -98,32 +98,6 @@ def show_players_page():
     st.table(df)
 
 # Página para editar jugadores
-# def edit_player_page():
-#     st.title("Editar Jugadores")
-#     data = load_data("data.json")
-
-#     if not data:
-#         st.warning("No hay jugadores disponibles para editar.")
-#         return
-
-#     player_names = [data[player]["name"] for player in data]
-#     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
-#     player_data = data[selected_player]
-
-#     velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
-#     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
-#     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
-#     posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
-
-#     if st.button("Guardar cambios"):
-#         player_data["velocidad"] = velocidad
-#         player_data["defensa"] = defensa
-#         player_data["ataque"] = ataque
-#         player_data["posición"] = posición
-#         save_data(data,"data.json")
-
-# Página para editar jugadores
-
 def edit_player_page():
     st.title("Editar Jugadores")
     data = load_data()
@@ -167,38 +141,6 @@ def edit_player_page():
         save_data(data)
         git_push()
 
-
-    # st.json(load_data("data.json"))
-
-# def edit_player_page():
-#     st.title("Editar Jugadores")
-#     data = load_data()
-
-#     if not data:
-#         st.warning("No hay jugadores disponibles para editar.")
-#         return
-
-#     player_names = [data[player]["name"] for player in data]
-#     selected_player = st.selectbox("Selecciona un jugador para editar", player_names)
-#     player_data = next(data[player] for player in data if data[player]["name"] == selected_player)
-#     posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
-#     velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
-#     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
-#     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
-    
-#     if st.button("Guardar cambios"):
-#         player_data["velocidad"] = velocidad
-#         player_data["defensa"] = defensa
-#         player_data["ataque"] = ataque
-#         player_data["posición"] = posición
-#         save_data(data)
-#         git_push()
-
-#     if st.button("Eliminar jugador"):
-#         data.pop(player_data)
-#         save_data(data)
-#         git_push()
-#     st.json(load_data("data.json"))
     
 # Página para agregar un nuevo jugador
 def add_new_player_page():
