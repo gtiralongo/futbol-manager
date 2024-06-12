@@ -48,13 +48,6 @@
         "ataque": 3,
         "posici\u00f3n": "Defensa"
     },
-    "Jugador8": {
-        "name": "Nan",
-        "velocidad": 2,
-        "defensa": 4,
-        "ataque": 3,
-        "posici\u00f3n": "Defensa"
-    },
     "Jugador9": {
         "name": "Do",
         "velocidad": 2,
