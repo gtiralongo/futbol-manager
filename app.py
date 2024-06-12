@@ -152,15 +152,8 @@ def edit_player_page():
     defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
     ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
 
-   
-    col1, col2 = st.columns(2)
-    boton_gusatdar = st.button("Guardar cambios")
-    boton_eliminar = st.button("Eliminar jugador")
-    col1.boton_guardar
-    col2.boton_eliminar
-       
     
-    if boton_gusatdar:
+    if st.button("Guardar cambios"):
         player_data["velocidad"] = velocidad
         player_data["defensa"] = defensa
         player_data["ataque"] = ataque
@@ -168,16 +161,12 @@ def edit_player_page():
         save_data(data)
         git_push()
 
-    if boton_eliminar:
+    if st.button("Eliminar jugador"):
         # Eliminar la entrada del jugador utilizando la clave
         del data[player_key]
         save_data(data)
         git_push()
-    # if st.button("Eliminar jugador"):
-    #     # Eliminar la entrada del jugador utilizando la clave
-    #     del data[player_key]
-    #     save_data(data)
-    #     git_push()
+
 
     # st.json(load_data("data.json"))
 
