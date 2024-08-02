@@ -1,11 +1,4 @@
 {
-    "Jugador10": {
-        "name": "Pelotas",
-        "velocidad": 3,
-        "defensa": 2,
-        "ataque": 3,
-        "posici\u00f3n": "Delantero"
-    },
     "Jugador2": {
         "name": "GT",
         "velocidad": 5,
