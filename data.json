@@ -6,13 +6,6 @@
         "ataque": 3,
         "posici\u00f3n": "Delantero"
     },
-    "Jugador2": {
-        "name": "Tin",
-        "velocidad": 2,
-        "defensa": 4,
-        "ataque": 3,
-        "posici\u00f3n": "Defensa"
-    },
     "Jugador3": {
         "name": "Mariano",
         "velocidad": 2,
