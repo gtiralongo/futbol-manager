@@ -1,11 +1,4 @@
 {
-    "Jugador1": {
-        "name": "GT",
-        "velocidad": 5,
-        "defensa": 2,
-        "ataque": 3,
-        "posici\u00f3n": "Delantero"
-    },
     "Jugador3": {
         "name": "Mariano",
         "velocidad": 2,
