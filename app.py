@@ -188,11 +188,8 @@ def add_and_select_teams_page():
     if not anotados:
         st.warning("No hay jugadores anotados disponibles.")
         return
-    if anotados!=1:
-        num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=len(anotados)//2, step=1)
-    else:
-        st.warning("Debe haber mas de un jugador para formar equipos")
-        num_players_per_team = null
+    num_players_per_team = st.number_input("Número de jugadores por equipo", min_value=1, max_value=len(anotados)//2, value=len(anotados)//2, step=1)
+    
     st.metric("Jugadores anotados", f"{len(anotados)}")
     
     if st.button("Formar Equipos"):
