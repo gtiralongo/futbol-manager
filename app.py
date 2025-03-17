@@ -28,7 +28,7 @@ def save_data(data, filename='data.json'):
 
 # Función para hacer commit y push a GitHub
 #def git_push():
-    try:
+    #try:
         # Configura tu nombre de usuario y correo electrónico de Git desde st.secrets
         #username = st.secrets["github"]["username"]
         #email = st.secrets["github"]["email"]
