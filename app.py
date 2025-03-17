@@ -39,9 +39,9 @@ def save_data(data, filename='data.json'):
         #subprocess.run(["git", "add", "data.json"], check=True)
         #subprocess.run(["git", "commit", "-m", "Actualización de data.json"], check=True)
         #subprocess.run(
-            ["git", "push", f"https://{username}:{token}@github.com/{username}/futbol-manager.git"],
-            check=True
-        )
+            #["git", "push", f"https://{username}:{token}@github.com/{username}/futbol-manager.git"],
+            #check=True
+        #)
         #st.success("Archivo data.json subido exitosamente.")
     except subprocess.CalledProcessError as e:
         #st.error(f"Error durante la ejecución de git: {e.stderr}")
