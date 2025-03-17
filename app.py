@@ -43,7 +43,7 @@ def save_data(data, filename='data.json'):
             #check=True
         #)
         #st.success("Archivo data.json subido exitosamente.")
-    except subprocess.CalledProcessError as e:
+    #except subprocess.CalledProcessError as e:
         #st.error(f"Error durante la ejecución de git: {e.stderr}")
 
 def git_push():
