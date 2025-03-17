@@ -27,24 +27,56 @@ def save_data(data, filename='data.json'):
         st.error(f"Error al guardar los datos: {e}")
 
 # Función para hacer commit y push a GitHub
-def git_push():
+#def git_push():
     try:
         # Configura tu nombre de usuario y correo electrónico de Git desde st.secrets
-        username = st.secrets["github"]["username"]
-        email = st.secrets["github"]["email"]
-        token = st.secrets["github"]["token"]
+        #username = st.secrets["github"]["username"]
+        #email = st.secrets["github"]["email"]
+        #token = st.secrets["github"]["token"]
 
-        subprocess.run(["git", "config", "--global", "user.name", username], check=True)
-        subprocess.run(["git", "config", "--global", "user.email", email], check=True)
-        subprocess.run(["git", "add", "data.json"], check=True)
-        subprocess.run(["git", "commit", "-m", "Actualización de data.json"], check=True)
-        subprocess.run(
+        #subprocess.run(["git", "config", "--global", "user.name", username], check=True)
+        #subprocess.run(["git", "config", "--global", "user.email", email], check=True)
+        #subprocess.run(["git", "add", "data.json"], check=True)
+        #subprocess.run(["git", "commit", "-m", "Actualización de data.json"], check=True)
+        #subprocess.run(
             ["git", "push", f"https://{username}:{token}@github.com/{username}/futbol-manager.git"],
             check=True
         )
-        st.success("Archivo data.json subido exitosamente.")
+        #st.success("Archivo data.json subido exitosamente.")
+    except subprocess.CalledProcessError as e:
+        #st.error(f"Error durante la ejecución de git: {e.stderr}")
+
+def git_push():
+    try:
+        # Obtener las credenciales desde Streamlit secrets
+        username = st.secrets["github"]["username"]
+        email = st.secrets["github"]["email"]
+        token = st.secrets["github"]["token"]
+        repository = "nombre_del_repositorio"  # Cambia esto con tu repo
+
+        # Configurar usuario de Git
+        subprocess.run(["git", "config", "--global", "user.name", username], check=True)
+        subprocess.run(["git", "config", "--global", "user.email", email], check=True)
+
+        # Agregar cambios
+        subprocess.run(["git", "add", "data.json"], check=True)
+
+        # Realizar commit
+        subprocess.run(["git", "commit", "-m", "Actualización de data.json"], check=True)
+
+        # Push al repositorio
+        push_command = [
+            "git", "push",
+            f"https://{username}:{token}@github.com/{username}/{repository}.git"
+        ]
+        result = subprocess.run(push_command, check=True, capture_output=True, text=True)
+
+        st.success("Archivo `data.json` subido exitosamente.")
+        st.write("Salida de git:", result.stdout)
+
     except subprocess.CalledProcessError as e:
         st.error(f"Error durante la ejecución de git: {e.stderr}")
+        st.write("Salida de git:", e.stdout)
 
 # Función para equilibrar equipos
 def balance_teams(players, num_players_per_team):
