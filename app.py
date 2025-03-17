@@ -154,9 +154,9 @@ def edit_player_page():
 
     player_data = data[player_key]
     posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
-    velocidad = st.slider("Velocidad", 0, 5, player_data["velocidad"])
-    defensa = st.slider("Defensa", 0, 5, player_data["defensa"])
-    ataque = st.slider("Ataque", 0, 5, player_data["ataque"])
+    velocidad = st.slider("Velocidad", 0, 10, player_data["velocidad"])
+    defensa = st.slider("Defensa", 0, 10, player_data["defensa"])
+    ataque = st.slider("Ataque", 0, 10, player_data["ataque"])
 
     
     if st.button("Guardar cambios"):
@@ -180,9 +180,9 @@ def add_new_player_page():
     data = load_data("data.json")
     new_name = st.text_input("Nombre del jugador")
     new_posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"])
-    new_velocidad = st.slider("Velocidad", 0, 5, 3)
-    new_defensa = st.slider("Defensa", 0, 5, 3)
-    new_ataque = st.slider("Ataque", 0, 5, 3)
+    new_velocidad = st.slider("Velocidad", 0, 10, 5)
+    new_defensa = st.slider("Defensa", 0, 10, 5)
+    new_ataque = st.slider("Ataque", 0, 10, 5)
 
     if st.button("Agregar Jugador"):
         if new_name:
@@ -229,9 +229,9 @@ def add_and_select_teams_page():
         
         st.title("Equipo 1:")
         col1, col2, col3 = st.columns(3)
-        col1.metric("Velocidad", f"{avg_team1['velocidad']:.2f} /5⭐",f"{avg_team1['velocidad']-avg_team2['velocidad']:.2f}")
-        col2.metric("Defensa", f"{avg_team1['defensa']:.2f} /5⭐",f"{avg_team1['defensa']-avg_team2['defensa']:.2f}")
-        col3.metric("Ataque", f"{avg_team1['ataque']:.2f} /5⭐", f"{avg_team1['ataque']-avg_team2['ataque']:.2f}")
+        col1.metric("Velocidad", f"{avg_team1['velocidad']:.2f} /10⭐",f"{avg_team1['velocidad']-avg_team2['velocidad']:.2f}")
+        col2.metric("Defensa", f"{avg_team1['defensa']:.2f} /10⭐",f"{avg_team1['defensa']-avg_team2['defensa']:.2f}")
+        col3.metric("Ataque", f"{avg_team1['ataque']:.2f} /10⭐", f"{avg_team1['ataque']-avg_team2['ataque']:.2f}")
 
         df = pd.DataFrame([player for player in teams['Team 1']] ,columns=['name', 'velocidad', 'defensa', 'ataque', "posición"])
         st.table(df)
@@ -240,9 +240,9 @@ def add_and_select_teams_page():
 
         st.title("Equipo 2:")
         col1, col2, col3 = st.columns(3)
-        col1.metric("Velocidad", f"{avg_team2['velocidad']:.2f} /5⭐",f"{avg_team2['velocidad']-avg_team1['velocidad']:.2f}")
-        col2.metric("Defensa", f"{avg_team2['defensa']:.2f} /5⭐",f"{avg_team2['defensa']-avg_team1['defensa']:.2f}")
-        col3.metric("Ataque", f"{avg_team2['ataque']:.2f} /5⭐", f"{avg_team2['ataque']-avg_team1['ataque']:.2f}")
+        col1.metric("Velocidad", f"{avg_team2['velocidad']:.2f} /10⭐",f"{avg_team2['velocidad']-avg_team1['velocidad']:.2f}")
+        col2.metric("Defensa", f"{avg_team2['defensa']:.2f} /10⭐",f"{avg_team2['defensa']-avg_team1['defensa']:.2f}")
+        col3.metric("Ataque", f"{avg_team2['ataque']:.2f} /10⭐", f"{avg_team2['ataque']-avg_team1['ataque']:.2f}")
 
         df = pd.DataFrame([player for player in teams['Team 2']] ,columns=['name', 'velocidad', 'defensa', 'ataque', "posición"])
         st.table(df)
