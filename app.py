@@ -52,7 +52,7 @@ def git_push():
         username = st.secrets["github"]["username"]
         email = st.secrets["github"]["email"]
         token = st.secrets["github"]["token"]
-        repository = "nombre_del_repositorio"  # Cambia esto con tu repo
+        repository = "futbol-manager"  # Cambia esto con tu repo
 
         # Configurar usuario de Git
         subprocess.run(["git", "config", "--global", "user.name", username], check=True)
