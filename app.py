@@ -277,8 +277,6 @@ def add_and_select_teams_page():
 # # elif page == "Agregar Jugadores Nuevo":
 # #     add_new_player_page()
 
-import streamlit as st
-
 def welcome_page():
     st.title("Bienvenido al Seleccionador de Equipos ⚽")
     st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
@@ -289,17 +287,17 @@ def welcome_page():
 tabs = st.tabs(["🏠 Bienvenida", "📋 Anotar y Seleccionar Equipos", "✏️ Editar Jugadores"])  # Puedes agregar más
 
 with tabs[0]:  # Pestaña de Bienvenida
-    st.image("img/img1.jpg")
-    st.write("Instagram del equipo:")
-    st.markdown("[Fútbol Cumbancha](https://www.instagram.com/futbolcumbancha?igsh=MWYyYjRlMWE4YWJsZA==)")
-    st.write("Caballito Norte Revivi tu partido:")
-    st.markdown("[Revivi Tu Partido](http://revivitupartido.com/)")
+    # st.image("img/img1.jpg")
+    # st.write("Instagram del equipo:")
+    # st.markdown("[Fútbol Cumbancha](https://www.instagram.com/futbolcumbancha?igsh=MWYyYjRlMWE4YWJsZA==)")
+    # st.write("Caballito Norte Revivi tu partido:")
+    # st.markdown("[Revivi Tu Partido](http://revivitupartido.com/)")
     welcome_page()
 
 with tabs[1]:  # Pestaña para seleccionar equipos
-    st.image("img/img2.jpeg")
+    # st.image("img/img2.jpeg")
     add_and_select_teams_page()
 
 with tabs[2]:  # Pestaña para editar jugadores
-    st.image("img/img3.jpeg")
+    # st.image("img/img3.jpeg")
     edit_player_page()
