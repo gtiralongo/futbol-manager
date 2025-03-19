@@ -250,29 +250,56 @@ def add_and_select_teams_page():
         #     st.write(player['name'])
 
 # Página de bienvenida
-def welcome_page():
+# def welcome_page():
 
+#     st.title("Bienvenido al Seleccionador de Equipos ⚽")
+#     st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
+#     show_players_page()
+#     add_new_player_page()
+    
+# # Navegación
+# st.sidebar.title("Navegación")
+# page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores"])#,"Agregar Jugadores Nuevo"])
+
+# if page == "Bienvenida":
+#     st.sidebar.image("img/img1.jpg")
+#     st.sidebar.write("Instagram del equipo:")
+#     st.sidebar.write("https://www.instagram.com/futbolcumbancha?igsh=MWYyYjRlMWE4YWJsZA==")
+#     st.sidebar.write("Caballito Norte Revivi tu partido:")
+#     st.sidebar.write("http://revivitupartido.com/")
+#     welcome_page()
+# elif page == "Anotar y Seleccionar Equipos":
+#     st.sidebar.image("img/img2.jpeg")
+#     add_and_select_teams_page()
+# elif page == "Editar Jugadores":
+#     st.sidebar.image("img/img3.jpeg")
+#     edit_player_page()
+# # elif page == "Agregar Jugadores Nuevo":
+# #     add_new_player_page()
+
+import streamlit as st
+
+def welcome_page():
     st.title("Bienvenido al Seleccionador de Equipos ⚽")
     st.write("Esta aplicación te ayudará a seleccionar jugadores para equipos basados en sus características.")
     show_players_page()
     add_new_player_page()
-    
-# Navegación
-st.sidebar.title("Navegación")
-page = st.sidebar.selectbox("Selecciona una página", ["Bienvenida","Anotar y Seleccionar Equipos", "Editar Jugadores"])#,"Agregar Jugadores Nuevo"])
 
-if page == "Bienvenida":
-    st.sidebar.image("img/img1.jpg")
-    st.sidebar.write("Instagram del equipo:")
-    st.sidebar.write("https://www.instagram.com/futbolcumbancha?igsh=MWYyYjRlMWE4YWJsZA==")
-    st.sidebar.write("Caballito Norte Revivi tu partido:")
-    st.sidebar.write("http://revivitupartido.com/")
+# 📌 Crear pestañas en la misma página
+tabs = st.tabs(["🏠 Bienvenida", "📋 Anotar y Seleccionar Equipos", "✏️ Editar Jugadores"])  # Puedes agregar más
+
+with tabs[0]:  # Pestaña de Bienvenida
+    st.image("img/img1.jpg")
+    st.write("Instagram del equipo:")
+    st.markdown("[Fútbol Cumbancha](https://www.instagram.com/futbolcumbancha?igsh=MWYyYjRlMWE4YWJsZA==)")
+    st.write("Caballito Norte Revivi tu partido:")
+    st.markdown("[Revivi Tu Partido](http://revivitupartido.com/)")
     welcome_page()
-elif page == "Anotar y Seleccionar Equipos":
-    st.sidebar.image("img/img2.jpeg")
+
+with tabs[1]:  # Pestaña para seleccionar equipos
+    st.image("img/img2.jpeg")
     add_and_select_teams_page()
-elif page == "Editar Jugadores":
-    st.sidebar.image("img/img3.jpeg")
+
+with tabs[2]:  # Pestaña para editar jugadores
+    st.image("img/img3.jpeg")
     edit_player_page()
-# elif page == "Agregar Jugadores Nuevo":
-#     add_new_player_page()
