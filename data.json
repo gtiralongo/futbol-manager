@@ -22,10 +22,10 @@
     },
     "Jugador4": {
         "name": "Nikpy",
-        "velocidad": 4,
-        "defensa": 5,
-        "ataque": 8,
-        "posici\u00f3n": "Delantero"
+        "velocidad": 5,
+        "defensa": 4,
+        "ataque": 7,
+        "posici\u00f3n": "Defensa"
     },
     "Jugador5": {
         "name": "Juan",
