@@ -6,11 +6,18 @@
         "ataque": 3,
         "posici\u00f3n": "Delantero"
     },
-"Jugador2": {
+    "Jugador2": {
         "name": "Pocho",
         "velocidad": 3,
         "defensa": 2,
         "ataque": 3,
+        "posici\u00f3n": "Delantero"
+    },
+    "Jugador3": {
+        "name": "Gullo",
+        "velocidad": 4,
+        "defensa": 5,
+        "ataque": 8,
         "posici\u00f3n": "Delantero"
     }
 }
