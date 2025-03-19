@@ -153,7 +153,13 @@ def edit_player_page():
         return
 
     player_data = data[player_key]
-    posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
+    posición = st.selectbox(
+    "Posición", 
+    ["Delantero", "Defensa", "Mediocampista", "Arquero"], 
+    index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]),
+    key=f"posicion_{player_data['name']}"  # Clave única basada en el nombre del jugador
+)
+    # posición = st.selectbox("Posición", ["Delantero", "Defensa", "Mediocampista", "Arquero"], index=["Delantero", "Defensa", "Mediocampista", "Arquero"].index(player_data["posición"]))
     velocidad = st.slider("Velocidad", 0, 10, player_data["velocidad"])
     defensa = st.slider("Defensa", 0, 10, player_data["defensa"])
     ataque = st.slider("Ataque", 0, 10, player_data["ataque"])
