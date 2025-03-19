@@ -19,5 +19,12 @@
         "defensa": 5,
         "ataque": 8,
         "posici\u00f3n": "Delantero"
+    },
+    "Jugador4": {
+        "name": "Nikpy",
+        "velocidad": 4,
+        "defensa": 5,
+        "ataque": 8,
+        "posici\u00f3n": "Delantero"
     }
 }
